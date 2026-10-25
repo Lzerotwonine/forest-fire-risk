@@ -1,4 +1,4 @@
-# Ghi chú xử lý dữ liệu — 25/10/2026
+# Tiến độ xử lý dữ liệu — 25/10/2026
 
 ## 1. Raster NDVI thử nghiệm
 

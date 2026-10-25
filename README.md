@@ -54,23 +54,71 @@
 
 ## 7. Trạng thái hiện tại
 
-- [x] Tạo cấu trúc thư mục dự án.
-- [x] Kiểm tra sơ bộ ranh giới GADM.
-- [x] Xuất ranh giới Lâm Đồng ra SHP và GPKG.
-- [x] Tải CSV FIRMS VIIRS S-NPP giai đoạn 2015–2025 cho Việt Nam.
-- [x] Chạy thử xử lý Landsat 8/9 trên Google Earth Engine.
-- [ ] Lọc FIRMS theo polygon Lâm Đồng.
-- [ ] Xuất raster NDVI/NDMI và kiểm tra trong QGIS.
-- [ ] Kiểm tra DEM và lựa chọn lớp phủ đất.
-- [ ] Tổng hợp dữ liệu khí tượng.
-- [ ] Xây dựng bộ mẫu và huấn luyện mô hình.
-- [ ] Đánh giá mô hình, tạo bản đồ nguy cơ và phát triển WebGIS.
+### Đã hoàn thành
 
-## 8. Lưu ý
+- [x] Tạo cấu trúc thư mục dự án và file `data_inventory.csv`.
+- [x] Kiểm tra dữ liệu ranh giới hành chính GADM 4.1 cấp tỉnh, xác định Lâm Đồng và xuất Shapefile, GeoPackage.
+- [x] Tải dữ liệu NASA FIRMS VIIRS S-NPP cho Việt Nam giai đoạn 2015–2025.
+- [x] Lọc dữ liệu FIRMS theo polygon Lâm Đồng, lưu CSV và GeoPackage.
+- [x] Mở dữ liệu FIRMS đã lọc trong QGIS và đối chiếu với ranh giới nghiên cứu.
+- [x] Chạy thử xử lý Landsat 8/9 trên Google Earth Engine để tính NDVI, NDMI và LST.
+- [x] Xuất raster NDVI tổng hợp mùa khô 2023–2024 và mở, kiểm tra hiển thị trong QGIS.
+- [x] Kiểm tra thông tin cơ bản của DEM trong QGIS.
+
+### Kết quả xử lý FIRMS
+
+- Nguồn: VIIRS S-NPP, NASA FIRMS.
+- Thời gian: 2015–2025.
+- Số điểm có tọa độ hợp lệ trong các CSV đầu vào: 701.085.
+- Số điểm sau khi lọc theo polygon Lâm Đồng: 14.789.
+- Đầu ra:
+  - `data/processed/fire_events/viirs_snpp_lam_dong_2015_2025.csv`
+  - `data/processed/fire_events/viirs_snpp_lam_dong_2015_2025.gpkg`
+
+Các con số trên là kết quả lọc không gian ban đầu, chưa phải số vụ cháy rừng đã xác minh. Chưa hoàn tất việc lọc chất lượng, xử lý sự kiện trùng lặp và xây dựng nhãn cháy/không cháy cho mô hình.
+
+### Kết quả Landsat thử nghiệm
+
+- Nguồn: Landsat 8/9 Collection 2 Level 2 trên Google Earth Engine.
+- Khoảng thời gian tổng hợp: 01/11/2023–01/05/2024, ngày kết thúc không được bao gồm trong bộ lọc.
+- Phương pháp: tổng hợp trung vị (median) của các ảnh đã tiền xử lý.
+- Chỉ số đã xuất: NDVI.
+- Độ phân giải xuất: 30 m.
+- Trạng thái: đã mở raster trong QGIS và điều chỉnh hiển thị để kiểm tra.
+
+Đây là kết quả thử nghiệm, chưa phải bộ biến viễn thám hoàn chỉnh cho toàn giai đoạn nghiên cứu 2015–2025. Giá trị LST bất thường và mặt nạ pixel nhiệt cần được kiểm tra trước khi sử dụng cho mô hình.
+
+### DEM
+
+- CRS theo metadata: EPSG:32648.
+- Kích thước raster: 5183 × 4001 pixel.
+- Kích thước pixel: khoảng 30,73 m.
+- Tỷ lệ pixel hợp lệ trong thống kê metadata: 51,13%.
+- Trạng thái: đã kiểm tra thông tin cơ bản; cần xác minh NoData và phạm vi phủ trước khi phân tích địa hình.
+
+### Đang thực hiện / chưa hoàn thành
+
+- [ ] Kiểm tra giá trị LST và chất lượng mặt nạ.
+- [ ] Kiểm tra DEM và tạo các biến địa hình.
+- [ ] Xử lý lớp phủ đất.
+- [ ] Chuẩn bị dữ liệu khí tượng và các biến nhân sinh.
+- [ ] Xác định đơn vị mẫu không gian–thời gian và quy tắc lấy mẫu âm.
+- [ ] Xây dựng và đánh giá các mô hình.
+- [ ] Tạo bản đồ nguy cơ và tích hợp WebGIS.
+
+## 8. Quy trình tiếp theo
+
+1. Hoàn thiện kiểm tra chất lượng dữ liệu nguồn.
+2. Chuẩn hóa các biến giải thích và khớp thời gian với dữ liệu phát hiện cháy.
+3. Xây dựng bộ mẫu và chia tập kiểm định theo không gian, thời gian.
+4. So sánh phương pháp chỉ số ngưỡng, Random Forest và XGBoost.
+5. Tạo bản đồ kết quả và phát triển WebGIS sau khi đánh giá mô hình.
+
+## 9. Lưu ý
 
 Các điểm FIRMS là điểm phát hiện nhiệt/đám cháy vệ tinh, không mặc nhiên là nhãn cháy rừng đã xác minh. Việc không có điểm FIRMS cũng không đảm bảo rằng khu vực không xảy ra cháy. Phương pháp tạo nhãn, lấy mẫu âm, chia tập kiểm định và diễn giải xác suất sẽ được mô tả rõ trong báo cáo nghiên cứu.
 
-## 9. Tài liệu tham khảo dữ liệu
+## 10. Tài liệu tham khảo dữ liệu
 
 - GADM: https://gadm.org/data.html#VNM
 - NASA FIRMS: https://firms.modaps.eosdis.nasa.gov/download/
