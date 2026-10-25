@@ -1,0 +1,75 @@
+
+# Python cache and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.python-version
+
+# Secrets and local environment settings
+.env
+.env.*
+!.env.example
+secrets.json
+credentials.json
+*service-account*.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# GIS temporary and auxiliary files
+*.qgz~
+*.gpkg-wal
+*.gpkg-shm
+*.aux.xml
+*.ovr
+*.tfw
+*.sbn
+*.sbx
+
+# Raw and processed datasets: keep them local, not in Git
+data/raw/*
+!data/raw/**/.gitkeep
+
+data/processed/*
+!data/processed/**/.gitkeep
+
+# Large downloaded or generated raster/vector files
+*.tif
+*.tiff
+*.vrt
+*.img
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.osm.pbf
+
+# Model files and generated outputs
+models/*
+!models/**/.gitkeep
+*.keras
+*.h5
+*.pkl
+*.joblib
+
+# Python packaging/build artifacts
+build/
+dist/
+*.egg-info/
