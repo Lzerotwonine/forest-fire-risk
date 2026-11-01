@@ -1,0 +1,11 @@
+variable_name,description,source,unit,resolution,temporal_period,processing_method,limitations
+NDVI,Chỉ số thực vật,Landsat 8/9,dimensionless,30m,monthly_or_period_composite,median,Ảnh hưởng bởi mây và chất lượng quan sát
+NDMI,Chỉ số độ ẩm thực vật,Landsat 8/9,dimensionless,30m,monthly_or_period_composite,median,Không phải phép đo độ ẩm nhiên liệu trực tiếp
+LST_C,Nhiệt độ bề mặt,Landsat 8/9,degree_C,30m,monthly_or_period_composite,median,Phụ thuộc chất lượng sản phẩm nhiệt
+elevation,Độ cao,DEM,m,30.73m,static,original_raster,Phụ thuộc độ phủ và NoData
+slope_deg,Độ dốc,DEM,degree,derived_from_DEM,static,GDAL_slope,Phụ thuộc chất lượng DEM
+landcover,Phân loại lớp phủ,ESA WorldCover 2021,class,10m,2021,categorical,Không đại diện thay đổi lớp phủ từng năm
+temperature_2m,Nhiệt độ không khí,ERA5-Land,degree_C,about_11km,daily_or_monthly,mean,Độ phân giải thấp hơn Landsat
+rain_30d,Tổng lượng mưa 30 ngày,ERA5-Land,mm,about_11km,30_day_lag,sum,Kiểm tra các giá trị tích lũy bất thường
+wind_speed_10m,Tốc độ gió 10m,ERA5-Land,m/s,about_11km,daily_or_monthly,mean,Không thể hiện đầy đủ gió địa hình cục bộ
+distance_to_roads,Khoảng cách đến đường,OpenStreetMap,m,derived_vector_raster,current_snapshot,nearest_distance,Không phải dữ liệu lịch sử từng năm
