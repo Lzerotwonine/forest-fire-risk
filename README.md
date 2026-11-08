@@ -116,7 +116,7 @@ Các con số trên là kết quả lọc không gian ban đầu, chưa phải s
 
 ## 9. Lưu ý
 
-Các điểm FIRMS là điểm phát hiện nhiệt/đám cháy vệ tinh, không mặc nhiên là nhãn cháy rừng đã xác minh. Việc không có điểm FIRMS cũng không đảm bảo rằng khu vực không xảy ra cháy. Phương pháp tạo nhãn, lấy mẫu âm, chia tập kiểm định và diễn giải xác suất sẽ được mô tả rõ trong báo cáo nghiên cứu.
+Các điểm FIRMS là điểm phát hiện nhiệt/đám cháy vệ tinh không mặc định là nhãn cháy rừng đã xác minh. Việc không có điểm FIRMS cũng không đảm bảo rằng khu vực không xảy ra cháy. Phương pháp tạo nhãn, lấy mẫu âm, chia tập kiểm định và diễn giải xác suất sẽ được mô tả rõ trong đồ án.
 
 ## 10. Tài liệu tham khảo dữ liệu
 

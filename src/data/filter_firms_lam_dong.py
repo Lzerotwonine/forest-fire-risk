@@ -35,7 +35,7 @@ def main():
             "Ranh giới chưa có CRS. Hãy kiểm tra nguồn dữ liệu."
         )
 
-    # GADM gốc của bạn là EPSG:4326.
+    # GADM gốc là EPSG:4326.
     # Chuyển ranh giới về WGS84 để khớp tọa độ FIRMS.
     boundary = boundary.to_crs("EPSG:4326")
     study_area = boundary.geometry.union_all()
